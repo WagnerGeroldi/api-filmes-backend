@@ -6,7 +6,7 @@ class FilmController {
   async findFilm(req: Request, res: Response, next: NextFunction) {
     const { search } = req.body;
 
-    await fetch(`http://www.omdbapi.com/?apikey=e20d15b&s=${search}`)
+    await fetch(`https://www.omdbapi.com/?apikey=e20d15b&s=${search}`)
       .then((response: any) => {
         response.json().then((data: any) => {
           return res.status(201).json({ data });
