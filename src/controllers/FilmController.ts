@@ -46,9 +46,9 @@ class FilmController {
 
   async removeFavorite(req: Request, res: Response) {
     const { imdbID } = req.params;
-
     await FavoriteModel.remove({ imdbID: imdbID });
-    return res.status(200).json({ message: "Removido com sucesso" });
+    const favoritesFilm = await FavoriteModel.find();
+    return res.status(200).json({ message: "Removido com sucesso", favoritesFilm });
   }
 }
 
