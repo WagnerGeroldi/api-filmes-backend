@@ -4,7 +4,6 @@ import FilmController from "../controllers/FilmController";
 
 const filmsRoutes = Router();
 
-filmsRoutes.post("/search", FilmController.findFilm);
 filmsRoutes.post("/favorite", FilmController.addFavorite)
 filmsRoutes.get("/findFavorite", FilmController.findFavorites)
 filmsRoutes.get("/findFavorite/:imdbID", FilmController.findFilmFavorite)

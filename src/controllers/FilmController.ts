@@ -1,20 +1,8 @@
-import { NextFunction, Request, Response } from "express";
-import fetch from "node-fetch";
+import {Request, Response } from "express";
 import FavoriteModel from "../Database/Model/FilmsFavoritesModel";
 
 class FilmController {
-  async findFilm(req: Request, res: Response, next: NextFunction) {
-    const { search } = req.body;
-
-    await fetch(`https://www.omdbapi.com/?apikey=e20d15b&s=${search}`)
-      .then((response: any) => {
-        response.json().then((data: any) => {
-          return res.status(201).json({ data });
-        });
-      })
-      .catch((e: any) => console.log("Erro"));
-  }
-
+ 
   async addFavorite(req: Request, res: Response) {
     const { Title, Year, imdbID, Poster } = req.body;
 
@@ -39,7 +27,9 @@ class FilmController {
   }
 
   async findFavorites(req: Request, res: Response) {
+
     const favoritesFilm = await FavoriteModel.find();
+    
     return res.status(201).json(favoritesFilm);
   }
 
